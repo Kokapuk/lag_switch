@@ -1,0 +1,11 @@
+{
+  "hotkey": {
+    "type": "keyboard",
+    "input": "alt_l",
+    "mode": "toggle"
+  },
+  "notifications": {
+    "enabled": true,
+    "volume": 0.3
+  }
+}
