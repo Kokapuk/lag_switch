@@ -1,3 +1,5 @@
+sc stop WinDivert1.3
+
 pyinstaller main.py \
   --name "LagSwitch" \
   --icon "resources/icon.ico" \
