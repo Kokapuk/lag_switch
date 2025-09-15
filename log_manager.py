@@ -3,8 +3,8 @@ from colorama import init, Fore, Style
 init()
 
 
-def print_blocking_state(blocking):
-    if blocking:
-        print(f'{Fore.RED}❌ DROPPING PACKETS{Style.RESET_ALL}')
+def print_enabled_state(enabled):
+    if enabled:
+        print(f'{Fore.GREEN}✅ ENABLED{Style.RESET_ALL}')
     else:
-        print(f'{Fore.GREEN}✅ ALLOWING PACKETS{Style.RESET_ALL}')
+        print(f'{Fore.RED}❌ DISABLED{Style.RESET_ALL}')

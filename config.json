@@ -1,4 +1,6 @@
 {
+  "preset": "lag",
+  "lag": 800,
   "hotkey": {
     "type": "keyboard",
     "input": "alt_l",

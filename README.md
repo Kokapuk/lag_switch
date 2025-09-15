@@ -2,6 +2,13 @@
 
 ## Config
 
+### preset
+
+`"drop" | "lag"`
+
+### lag
+`{int}`: lag ms for `"lag"` `preset`
+
 ### hotkey.type
 
 `"keyboard" | "mouse"`
@@ -23,4 +30,3 @@
 ### notifications.volume
 
 `0.0 - 1.0`
-

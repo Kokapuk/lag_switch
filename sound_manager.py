@@ -1,10 +1,9 @@
-from os import environ
+from os import environ, path
+from config_manager import load_config
+
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 
-
 from pygame import mixer
-from config_manager import load_config
-from os import path
 
 mixer.init()
 SOUND_ENABLE = mixer.Sound(path.abspath(
@@ -18,8 +17,8 @@ SOUND_ENABLE.set_volume(config['notifications']['volume'])
 SOUND_DISABLE.set_volume(config['notifications']['volume'])
 
 
-def play_blocking_state_sound(blocking):
-    if blocking:
+def play_enabled_state_sound(enabled):
+    if enabled:
         SOUND_ENABLE.play()
     else:
         SOUND_DISABLE.play()
