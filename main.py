@@ -1,6 +1,6 @@
 from config_manager import load_config
 from sound_manager import play_enabled_state_sound
-from log_manager import print_enabled_state
+from log_manager import print_preset, print_enabled_state
 from input_manager import bind_hotkey
 from handle_packets import handle_drop_packets, handle_lag_packets
 
@@ -39,6 +39,7 @@ elif config['hotkey']['mode'] == 'push':
 
 enabled = {'value': False}
 
+print_preset(config['preset'])
 print_enabled_state(enabled['value'])
 
 match config['preset']:

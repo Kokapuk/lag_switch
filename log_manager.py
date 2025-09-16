@@ -3,6 +3,10 @@ from colorama import init, Fore, Style
 init()
 
 
+def print_preset(preset):
+    print(f'{Fore.CYAN}❕ PRESET: {preset}')
+
+
 def print_enabled_state(enabled):
     if enabled:
         print(f'{Fore.GREEN}✅ ENABLED{Style.RESET_ALL}')
