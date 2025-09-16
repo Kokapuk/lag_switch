@@ -1,6 +1,16 @@
 {
   "preset": "lag",
   "lag": 800,
+  "ignore_channels": [
+    {
+      "port_range": [50000, 65536],
+      "protocols": [17]
+    },
+    {
+      "port_range": [27015, 27050],
+      "protocols": [6, 17]
+    }
+  ],
   "hotkey": {
     "type": "keyboard",
     "input": "alt_l",

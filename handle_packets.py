@@ -4,14 +4,6 @@ import threading
 
 config = load_config()
 
-IGNORE_CHANNELS = [
-    {'ports': range(50000, 65536), 'protocols': [
-        pydivert.Protocol.UDP]},  # DISCORD VOICES
-
-    {'ports': range(27015, 27050), 'protocols': [
-        pydivert.Protocol.UDP, pydivert.Protocol.TCP]},  # STEAM FRIENDS AND ACTIVITY
-]
-
 
 def handle_drop_packets(enabled):
     with pydivert.WinDivert('outbound and ip.SrcAddr != 127.0.0.1') as w:
@@ -20,8 +12,13 @@ def handle_drop_packets(enabled):
                 w.send(packet)
                 continue
 
-            for channel in IGNORE_CHANNELS:
-                if any(x == packet.protocol[0] for x in channel['protocols']) and packet.dst_port in channel['ports']:
+            for channel in config['ignore_channels']:
+                port_match = packet.dst_port in range(
+                    channel['port_range'][0], channel['port_range'][1])
+                protocol_match = any(
+                    x == packet.protocol[0] for x in channel['protocols'])
+
+                if port_match and protocol_match:
                     w.send(packet)
 
 
@@ -38,8 +35,13 @@ def handle_lag_packets(enabled):
 
             ignored = False
 
-            for channel in IGNORE_CHANNELS:
-                if any(x == packet.protocol[0] for x in channel['protocols']) and packet.src_port in channel['ports']:
+            for channel in config['ignore_channels']:
+                port_match = packet.src_port in range(
+                    channel['port_range'][0], channel['port_range'][1])
+                protocol_match = any(
+                    x == packet.protocol[0] for x in channel['protocols'])
+
+                if port_match and protocol_match:
                     w.send(packet)
                     ignored = True
 

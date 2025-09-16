@@ -19,7 +19,7 @@ if config['hotkey']['mode'] == 'toggle':
 
     bind_hotkey(toggle)
 
-elif config['hotkey']['mode'] == 'push':
+elif config['hotkey']['mode'] == 'hold':
     def set_enabled(new_enabled):
         global enabled
         enabled['value'] = new_enabled
